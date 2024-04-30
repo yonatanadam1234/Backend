@@ -253,6 +253,34 @@ const updateUser = async (req, res, next) => {
   }
 };
 
+// ChangePassword
+const ChangePassword = async (req, res, next) => {
+  try {
+    const salt = await bcrypt.genSalt(10);
+    const { email, oldpassword, newpassword } = req.body;
+    const newPassword = await bcrypt.hash(newpassword, salt);
+
+    const query = {
+      $and: [{ email: email }, { isverify: true }],
+    };
+    const user = await User.findOne(query);
+
+    const isPasswordCorrect = await user.comparePassword(oldpassword);
+    if (!isPasswordCorrect) {
+      return res.status(400).send({ message: "Invalid Old Password" });
+    }
+
+    await User.findOneAndUpdate(
+      { email: email },
+      { password: newPassword },
+      { new: true }
+    );
+
+    return res.status(200).send({ message: "Password has been updated!" });
+  } catch (error) {
+    return next(error);
+  }
+};
 module.exports = {
   register,
   login,
@@ -261,4 +289,5 @@ module.exports = {
   verifyForgotPasswordOtp,
   updateForgotPassword,
   updateUser,
+  ChangePassword
 };
