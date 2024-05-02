@@ -24,6 +24,10 @@ const UserSchema = new mongoose.Schema({
   phone: {
     type: Number
   },
+  role: {
+    type: String,
+    default: 'user'
+  },
   address: {
     type: String,
     required: [true, "please provide Address"]
