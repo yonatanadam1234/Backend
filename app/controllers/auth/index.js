@@ -269,6 +269,17 @@ const ChangePassword = async (req, res, next) => {
     if (!isPasswordCorrect) {
       return res.status(400).send({ message: "Invalid Old Password" });
     }
+    const data = await ejs.renderFile(
+      path.join(__dirname, "../../../views/ChangePassword.ejs"),
+      { name: user.name }
+    );
+
+    const sendMailObject = {
+      email: email,
+      subject: 'Password changed successfully',
+      html: data
+    }
+    MailSender(sendMailObject)
 
     await User.findOneAndUpdate(
       { email: email },
