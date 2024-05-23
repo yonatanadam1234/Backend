@@ -92,6 +92,33 @@ const login = async (req, res) => {
         expiresIn: process.env.JWT_LIFTIME,
       }
     );
+    user.token = token
+    await user.save()
+    return res
+      .status(200)
+      .send({ user: user, token, message: "Login succefully" });
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// User Login
+const findeUser = async (req, res) => {
+  try {
+    const { token } = req.params;
+    if (!token) {
+      return res
+        .status(400)
+        .json({ message: "Please provide Token" });
+    }
+    const query = {
+      $and: [{ token: token }, { isverify: true }],
+    };
+    const user = await User.findOne(query);
+    if (!user) {
+      return res.status(400).send({ message: "Invalid credential" });
+    }
     return res
       .status(200)
       .send({ user: user, token, message: "Login succefully" });
@@ -300,5 +327,6 @@ module.exports = {
   verifyForgotPasswordOtp,
   updateForgotPassword,
   updateUser,
-  ChangePassword
+  ChangePassword,
+  findeUser
 };

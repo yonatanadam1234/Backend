@@ -32,6 +32,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "please provide Address"]
   },
+  token: {
+    type: String,
+    default: ''
+  },
   isverify: {
     type: Boolean,
     default: false,
