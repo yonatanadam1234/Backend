@@ -160,6 +160,8 @@ const verifyOtp = async (req, res) => {
             expiresIn: process.env.JWT_LIFTIME,
           }
         );
+        user.token = token
+        await user.save()
         res.status(200).send({
           message: "OTP verify successfully!",
           user: user,
