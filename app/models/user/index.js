@@ -40,6 +40,10 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  subscriptionPlan: {
+    type: String,
+    default: 0
+  },
   createdAt: {
     type: Date,
     default: Date.now,
