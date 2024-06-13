@@ -1,13 +1,16 @@
 const jwt = require("jsonwebtoken");
 
 const verifyToken = (req, res, next) => {
-  const token = req.headers.authorization;
+  let token = req.headers.authorization;
 
   if (!token) {
-    return res
-      .status(403)
-      .send({ message: "A token is required for authentication" });
+    return res.status(403).send({ message: "A token is required for authentication" });
   }
+
+  if (token.startsWith("Bearer ")) {
+    token = token.slice(7, token.length);
+  }
+
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const { email, id } = decoded;

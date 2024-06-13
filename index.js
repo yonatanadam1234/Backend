@@ -16,6 +16,7 @@ require("express-async-errors");
 
 // Import Router
 const authRoute = require("./app/routes/auth");
+const shopRoute = require("./app/routes/shope");
 
 app.use(
   cors({
@@ -32,6 +33,7 @@ app.set("view engine", "ejs");
 
 // Router
 app.use("/auth", authRoute);
+app.use("/shop", shopRoute);
 
 app.use(errorMiddleware);
 app.use(notFoundMiddleware);
