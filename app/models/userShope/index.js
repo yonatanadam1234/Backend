@@ -18,6 +18,22 @@ const ShopSchema = new mongoose.Schema({
         ref: "User",
         require: true
     },
+    storeName: {
+        type: String,
+        require: true
+    },
+    region: {
+        type: String,
+        require: true
+    },
+    timezone: {
+        type: String,
+        require: true
+    },
+    isActive: {
+        type: Boolean,
+        default: true
+    }
 });
 
 

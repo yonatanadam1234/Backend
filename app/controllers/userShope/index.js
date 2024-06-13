@@ -3,9 +3,9 @@ const userShope = require("../../models/userShope");
 
 const create = async (req, res) => {
     try {
-        const { shopType, shopId, shopToken } = req.body;
+        const { shopType, shopId, shopToken, storeName, region, timezone } = req.body;
         const userId = req.user.id
-        const shope = await userShope.create({ shopType, shopId, shopToken, userId });
+        const shope = await userShope.create({ shopType, shopId, shopToken, userId, storeName, region, timezone });
 
         return res
             .status(200)
@@ -33,7 +33,21 @@ const findeShop = async (req, res) => {
     }
 };
 
+const deleteShop = async (req, res) => {
+    try {
+        const id = req.params.id
+
+        const shope = await userShope.findByIdAndDelete(id)
+
+        return res
+            .status(200)
+            .send({ shope: shope, message: "Shop delete successfully" });
+    } catch (error) {
+        return res.status(400).send({ message: error.message });
+    }
+};
 module.exports = {
     create,
-    findeShop
+    findeShop,
+    deleteShop
 };
