@@ -135,7 +135,7 @@ const verifyOtp = async (req, res) => {
     if (!user) {
       return res.status(400).send({ message: "Invalid Email" });
     }
-    const loginUser = await Otp.findOne({ email });
+    const loginUser = await Otp.findOne({ email, userId: user._id });
     if (loginUser) {
       if (otp === loginUser.otp) {
         user.isverify = true;
@@ -225,8 +225,11 @@ const forgotPassword = async (req, res, next) => {
 const verifyForgotPasswordOtp = async (req, res) => {
   try {
     const { email, otp } = req.body;
-
-    const otpUser = await Otp.findOne({ email });
+    const user = await User.findOne({ email: email });
+    if (!user) {
+      return res.status(400).send({ message: "Invalid Email" });
+    }
+    const otpUser = await Otp.findOne({ email, userId: user._id });
     if (!otpUser) {
       return res.status(400).send({ message: "Something went wrong" });
     }
