@@ -34,7 +34,7 @@ app.set("view engine", "ejs");
 // Router
 app.use("/auth", authRoute);
 app.use("/shop", shopRoute);
-
+app.use(express.static('images'));
 app.use(errorMiddleware);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

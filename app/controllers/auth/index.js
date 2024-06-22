@@ -19,7 +19,7 @@ const register = async (req, res) => {
     }
     const data = await ejs.renderFile(
       path.join(__dirname, "../../../views/OtpTemplate.ejs"),
-      { name: name, otp: otp }
+      { name: name, otp: otp, imageUrl: "https://squid-app-oqakh.ondigitalocean.app/logo.png" }
     );
 
     const sendMailObject = {
@@ -265,14 +265,12 @@ const updateForgotPassword = async (req, res, next) => {
 const updateUser = async (req, res, next) => {
   try {
     const { name, lastname, image, email, password } = req.body;
-    const salt = await bcrypt.genSalt(10);
-    const newPassword = await bcrypt.hash(password, salt);
-
+    
     const data = {
       name,
       lastname,
       image,
-      password: newPassword,
+      email
     };
     const updatePassword = await User.findOneAndUpdate(
       { _id: req.user.id },

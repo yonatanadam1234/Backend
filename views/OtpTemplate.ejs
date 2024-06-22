@@ -1,85 +1,249 @@
-<!doctype html>
-<html lang="en-US">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-  <title>Reset Password Email Template</title>
-  <meta name="description" content="Reset Password Email Template.">
-  <style type="text/css">
-    a:hover {
-      text-decoration: underline !important;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Email - Any Profit</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    body {
+      font-family: "Be Vietnam Pro", sans-serif;
+    }
+
+    .child {
+      width: 100%;
+      max-width: 672px;
+      margin: 0 auto;
+    }
+
+    .view-email p {
+      font-size: 16px;
+      line-height: 170%;
+    }
+
+    .inner-content {
+      padding: 24px;
+      text-align: center;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
+    .text-center {
+      font-size: 32px;
+      color: #3b82f6;
+      font-weight: 600;
+    }
+
+    .link {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    .font-Cabin {
+      font-family: 'Cabin', sans-serif;
+    }
+
+    .bg-blue-500 {
+      background-color: #90EE90;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .pt-8 {
+      padding-top: 2rem;
+    }
+
+    .pb-5 {
+      padding-bottom: 1.25rem;
+    }
+
+    .p-0 {
+      padding: 0;
+    }
+
+    .inline-block {
+      display: inline-block;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-xs {
+      font-size: 0.75rem;
+    }
+
+    .md\:text-sm {
+      font-size: 0.875rem;
+    }
+
+    .text-base {
+      font-size: 1rem;
+    }
+
+    .md\:text-lg {
+      font-size: 1.125rem;
+    }
+
+    .text-2xl {
+      font-size: 1.5rem;
+    }
+
+    .md\:text-3xl {
+      font-size: 1.875rem;
+    }
+
+    .text-blue-500 {
+      color: #3b82f6;
+    }
+
+    .text-base {
+      font-size: 1rem;
+    }
+
+    .container2 {
+      margin: 0 auto;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      background-color: #000;
+      text-align: center;
+      border-bottom-right-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    .content {
+      padding: 33px 55px;
+      font-family: 'Cabin', sans-serif;
+      color: #ffffff;
+    }
+
+    .greeting {
+      font-size: 16px;
+      line-height: 23px;
+      font-weight: 500;
+    }
+
+    .message {
+      font-size: 16px;
+      line-height: 23px;
+      font-weight: 500;
+    }
+
+    .signature {
+      font-size: 20px;
+      line-height: 28.8px;
+      margin-top: 40px;
+      margin-bottom: 0px !important;
+      font-weight: 700;
+    }
+
+    img {
+      height: 65px;
+      width: 250px;
     }
   </style>
 </head>
 
-<body marginheight="0" topmargin="0" marginwidth="0" style="margin: 0px; background-color: #f2f3f8;" leftmargin="0">
-  <!--100% body table-->
-  <table cellspacing="0" border="0" cellpadding="0" width="100%" bgcolor="#f2f3f8"
-    style="@import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700|Open+Sans:300,400,600,700); font-family: 'Open Sans', sans-serif;">
-    <tr>
-      <td>
-        <table style="background-color: #f2f3f8; max-width:670px;  margin:0 auto;" width="100%" border="0"
-          align="center" cellpadding="0" cellspacing="0">
-          <tr>
-            <td style="height:80px;">&nbsp;</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;">
-              <h1
-                style="color: #455056;font-size: 25px;line-height: 24px;text-transform: capitalize;margin: 0;border-bottom: 2px solid #D14343;display: inline;padding: 5px;">
-                Hello <%= name %>
-              </h1>
-            </td>
-          </tr>
-          <tr>
-            <td style="height:20px;">&nbsp;</td>
-          </tr>
-          <tr>
-            <td>
-              <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0"
-                style="max-width:670px;background:#fff; border-radius:3px; text-align:center;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);">
-                <tr>
-                  <td style="height:40px;">&nbsp;</td>
-                </tr>
-                <tr>
-                  <td style="padding:0 35px;">
-                    <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">
-                      THANKS FOR SIGNING UP!
-                    </h1>
-                    <span
-                      style="display: inline-block;vertical-align: middle;margin: 29px 0 26px;border-bottom: 1px solid #D14343;width: 100px;"></span>
-                    <p style="color:#455056; font-size:15px;line-height:24px; margin:0;">
-                      Hi,
+<body>
+  <div class="container" style="margin: 30px 0 10px 0;">
+    <div class="child">
 
-                      You're almost ready to get started. Please verify OTP below to verify your email address and enjoy
-                      exclusive cleaning services with us!
-                    </p>
-                    <p>
-                      Please use the following One Time Password (OTP) to Sign Up:
-                    <h1
-                      style="color: #455056;font-size: 25px;line-height: 24px;text-transform: capitalize;margin: 0;border-bottom: 2px solid #D14343;display: inline;padding: 8px;">
-                      OTP <%= otp %>
-                    </h1><br>
-                    Do not share this OTP with anyone.
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="height:40px;">&nbsp;</td>
-                </tr>
-              </table>
-            </td>
-          <tr>
-            <td style="height:20px;">&nbsp;</td>
-          </tr>
-          <tr>
-            <td style="height:80px;">&nbsp;</td>
-          </tr>
+
+      <br>
+      <div class="font-Cabin bg-blue-500">
+
+        <table class="w-full" role="presentation">
+          <tbody>
+            <tr>
+              <td class="pt-8" align="left">
+                <table class="w-full">
+                  <tr>
+                    <td class="p-0" align="center">
+                      <img src="https://cdn.templates.unlayer.com/assets/1597218650916-xxxxc.png" alt="Image"
+                        title="Image" class="inline-block" style="max-width: 200.8px;">
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </tbody>
         </table>
-      </td>
-    </tr>
-  </table>
-  <!--/100% body table-->
+
+        <table class="w-full" role="presentation">
+          <tbody>
+            <tr>
+              <td class="" align="left">
+                <div class="text-center">
+                  <!-- <p class="" style="color: #e5eaf5; line-height: 140%;"> -->
+                  <div class="" style="color: #000; font-size: 14px; font-weight: bold; margin: 10px 0 20px 0;">T H A
+                    N K S&nbsp; &nbsp;F O R&nbsp; &nbsp;S I G N I N G&nbsp; &nbsp;U P!</div>
+                  <!-- </p> -->
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="w-full" role="presentation" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td class="" align="left">
+                <div class="text-center">
+                  <p class="text-base md:text-lg"
+                    style="color: #000; line-height: 140%; margin-top: 0px; margin-bottom: 30px;">
+                    <strong class="text-2xl md:text-3xl">Verify Your E-mail Address</strong>
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="container2">
+        <div class="u-row-container">
+          <div class="u-row">
+            <div class="u-col u-col-100">
+              <div class="content">
+                <div class="text-center">
+                  <img class="logo" src="<%= imageUrl %>" alt="Any Profit Logo"> <!-- Reference to the cid -->
+                </div>
+
+                <p class="greeting" style="margin: 0 !important; margin-top: 20px !important;">Hi, <%= name %>
+                </p>
+                <p class="message" style="margin: 0 !important; margin-bottom: 30px !important;">You're almost ready to
+                  get started. Please verify OTP below to verify your email address and enjoy exclusive cleaning
+                  services with us!</p>
+                <p class="message" style="margin: 0 !important;">Please use the following One Time Password (OTP) to
+                  Sign Up: <span style="font-weight: 800;">
+                    <%= otp %>
+                  </span> </p>
+                <p class="message" style="margin: 0 !important; margin-bottom: 30px !important;">Do not share this OTP
+                  with anyone.</p>
+                <!-- <a href="#" class="verify-button">VERIFY YOUR EMAIL</a> -->
+                <p class="signature">Thanks,<br>Welcome ToAny Profit</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
 </body>
 
 </html>
