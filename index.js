@@ -24,6 +24,8 @@ app.use(
   })
 );
 
+app.use(express.static("public"));
+app.use("/image", express.static("images"));
 app.use(express.json());
 
 app.get("/", (req, res) => {

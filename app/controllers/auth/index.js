@@ -264,17 +264,16 @@ const updateForgotPassword = async (req, res, next) => {
 //Update user
 const updateUser = async (req, res, next) => {
   try {
-    const { name, lastname, image, email, password } = req.body;
-    
+    const { name, email } = req.body;
     const data = {
       name,
-      lastname,
-      image,
-      email
+      email,
+      image: req?.file?.filename,
     };
-    const updatePassword = await User.findOneAndUpdate(
-      { _id: req.user.id },
-      { data },
+    const id = req.user.id
+    const updatePassword = await User.findByIdAndUpdate(
+      id,
+      data,
       { new: true }
     );
     res.status(200).send(updatePassword);
