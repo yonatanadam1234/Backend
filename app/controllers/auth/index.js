@@ -135,7 +135,7 @@ const verifyOtp = async (req, res) => {
     if (!user) {
       return res.status(400).send({ message: "Invalid Email" });
     }
-    const loginUser = await Otp.findOne({ email, userId: user._id });
+    const loginUser = await Otp.findOne({ email });
     if (loginUser) {
       if (otp === loginUser.otp) {
         user.isverify = true;
