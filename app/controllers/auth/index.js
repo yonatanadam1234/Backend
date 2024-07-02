@@ -41,13 +41,13 @@ const register = async (req, res) => {
     const loginUser = await User.findOne({ email }).select("-password");
 
     const alreadyExist = await Otp.findOneAndUpdate(
-      email,
+      { email: email },
       { otp: otp },
       { new: true }
     );
 
     if (!alreadyExist) {
-      await Otp.create({
+      const result = await Otp.create({
         otp,
         userId: loginUser._id,
         email,
@@ -131,19 +131,20 @@ const findeUser = async (req, res) => {
 const verifyOtp = async (req, res) => {
   try {
     const { email, otp } = req.body;
+    console.log("🚀 ~ verifyOtp ~ otp:", otp)
     const user = await User.findOne({ email: email });
     if (!user) {
       return res.status(400).send({ message: "Invalid Email" });
     }
-    const loginUser = await Otp.findOne({ email });
+    const loginUser = await Otp.findOne({ email, userId: user._id });
     if (loginUser) {
-      if (otp === loginUser.otp) {
+      if (parseInt(otp) === parseInt(loginUser.otp)) {
         user.isverify = true;
         await user.save();
 
         const data = await ejs.renderFile(
           path.join(__dirname, "../../../views/EmailVerify.ejs"),
-          { name: user.name }
+          { name: user.name, imageUrl: "https://squid-app-oqakh.ondigitalocean.app/logo.png" }
         );
 
         const sendMailObject = {
@@ -194,7 +195,7 @@ const forgotPassword = async (req, res, next) => {
     }
     const data = await ejs.renderFile(
       path.join(__dirname, "../../../views/ForgetpasswordTemplate.ejs"),
-      { name: user.name, otp: otp }
+      { name: user.name, otp: otp, imageUrl: "https://squid-app-oqakh.ondigitalocean.app/logo.png" }
     );
 
     const sendMailObject = {
@@ -300,7 +301,7 @@ const ChangePassword = async (req, res, next) => {
     }
     const data = await ejs.renderFile(
       path.join(__dirname, "../../../views/ChangePassword.ejs"),
-      { name: user.name }
+      { name: user.name, imageUrl: "https://squid-app-oqakh.ondigitalocean.app/logo.png" }
     );
 
     const sendMailObject = {
